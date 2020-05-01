@@ -115,23 +115,32 @@ class Backstory extends React.Component {
 
         return (
             <Container>
+                <Container>
+                <h4>My Birth</h4>
+                
                 <Row>
-                    <Col><Button onClick={() => this.genState("parents")}>Reroll Parents</Button></Col>
-                    <Col>{this.state.parents}</Col> 
-                </Row>
-                <Row>
-                    <Col><Button onClick={() => this.genState("birthplace")}>Reroll Birthplace</Button></Col>
                     <Col>I was born {this.state.birthplace}.</Col> 
                 </Row>
+                <h4>My Family</h4>
                 <Row>
-                    <Col><Button onClick={() => this.genState("siblings")}>Reroll Siblings</Button></Col>
+                    <Col>{this.state.parents}</Col>
+                </Row>
+                <Row>
+                    <Col>{this.state.family}</Col>
+                </Row>
+                <Row>
                     <Col>I have {this.state.siblings.length ? this.state.siblings.length : 'no'} {this.state.siblings.length == 1 ? 'sibling' : 'siblings'}<ul>{sibOut}</ul></Col>
                 </Row>
                 
+            </Container>
+            <Container>
                 <Row>
+                    <Col><Button onClick={() => this.genState("birthplace")}>Reroll Birthplace</Button></Col>
+                    <Col><Button onClick={() => this.genState("parents")}>Reroll Parents</Button></Col>
+                    <Col><Button onClick={() => this.genState("siblings")}>Reroll Siblings</Button></Col>
                     <Col><Button onClick={() => this.genState("family")}>Reroll Family</Button></Col>
-                    <Col>{this.state.family}</Col>
                 </Row>
+            </Container>
             </Container>
         );
     
