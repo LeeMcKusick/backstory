@@ -46,7 +46,7 @@ class Backstory extends React.Component {
                 let roll = this.roll(100);
                 let fam = this.getResult("family", roll);
 
-                if (this.state.parents != "I do not know who my parents were.") {
+                if (this.state.parents !== "I do not know who my parents were.") {
                     if( roll < 36 ){
                         fam = fam + " My mother " + this.getResult("absentParent", this.roll(10))  + " My father " + this.getResult("absentParent", this.roll(10));
                     } else if (roll < 56) {
@@ -79,8 +79,8 @@ class Backstory extends React.Component {
             return res;
         } else {
             let val;
-            let opts;
-            opts = Object.keys(originOptions[table]).forEach(function(key) {
+            //let opts;
+            Object.keys(originOptions[table]).forEach(function(key) {
                 let splitKey = key.split(":");
                 if(splitKey[1]) {
                     if(splitKey[0] <= roll && roll <= splitKey[1]) {
@@ -100,6 +100,7 @@ class Backstory extends React.Component {
      
         for(let i=0; i < numSibs; i++) {
             siblings.push({
+                num: i,
                 order: this.getResult( "birthOrder", this.roll(20) ),
                 gender: this.getResult("siblingGender", this.roll(2) )
             });
@@ -110,7 +111,7 @@ class Backstory extends React.Component {
 
     render() {
         let sibOut = this.state.siblings.map((sib) =>
-            <li key={sib}>A {sib.gender}, who is {sib.order}</li>
+            <li key={sib.num}>A {sib.gender}, who is {sib.order}</li>
         );
 
         return (
@@ -129,7 +130,7 @@ class Backstory extends React.Component {
                     <Col>{this.state.family}</Col>
                 </Row>
                 <Row>
-                    <Col>I have {this.state.siblings.length ? this.state.siblings.length : 'no'} {this.state.siblings.length == 1 ? 'sibling' : 'siblings'}<ul>{sibOut}</ul></Col>
+                    <Col>I have {this.state.siblings.length ? this.state.siblings.length : 'no'} {this.state.siblings.length === 1 ? 'sibling' : 'siblings'}<ul>{sibOut}</ul></Col>
                 </Row>
                 
             </Container>

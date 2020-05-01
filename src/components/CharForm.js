@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
+//import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import charOptions from '../data/characterOptions.json';
 import Backstory from './Backstory.js'
@@ -30,7 +30,7 @@ class CharForm extends React.Component {
     handleSubraceChange = (event) => {
         const target = event.currentTarget;
         const value = target.value;
-        const name = target.name;
+        //const name = target.name;
         let option = this.state.race.subraces.find(a => a.name === value);
         this.setState({
             subrace: option
